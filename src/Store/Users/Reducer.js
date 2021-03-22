@@ -57,10 +57,26 @@ const reducerMapping = {
 		const newUsers = { ...state.users };
 		delete newUsers[userId];
 
-		return{
+		let tempGroups = { ...state.groups };
+		for (let i = 0; i < state.groupsIds.length; i++) {
+			let tempGroupUsers = [...state.groups[state.groupsIds[i]].groupUsers];
+			let newGroupUsers = tempGroupUsers.filter(item => item !== userId);
+
+			tempGroups = {
+				...tempGroups,
+				[state.groupsIds[i]]: {
+					groupName: state.groups[state.groupsIds[i]].groupName,
+					groupUsers: [...newGroupUsers],
+					id: state.groupsIds[i],
+				}
+			}
+		}
+
+		return {
 			...state,
 			users: newUsers,
 			usersIds: Object.keys(newUsers),
+			groups: tempGroups,
 		};
 	},
 }
