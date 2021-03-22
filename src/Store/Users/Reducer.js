@@ -2,19 +2,21 @@ import { usersActionTypes } from "./ActionTypes";
 
 const initialState = {
 	users: {
-		'id0': { name: 'Petr' },
-		'id1': { name: 'Ivan' },
-		'id2': { name: 'Vasya' },
+		'id0': { name: 'Petr', id: 'id0' },
+		'id1': { name: 'Ivan', id: 'id1' },
+		'id2': { name: 'Vasya', id: 'id2' },
 	},
 	usersIds: ['id0', 'id1', 'id2'],
 	groups: {
 		'id10': {
 			groupName: 'Admins',
-			groupUsers: [],
+			groupUsers: ['id0', 'id1', 'id2'],
+			id: 'id10',
 		},
 		'id11': {
 			groupName: 'Customers',
-			groupUsers: [],
+			groupUsers: ['id0', 'id2'],
+			id: 'id11',
 		},
 	},
 	groupsIds: ['id10', 'id11'],
@@ -63,4 +65,4 @@ const reducerMapping = {
 	},
 }
 
-export const users = (state = initialState, action) => reducerMapping[action.type] ? reducerMapping[action.type](state, action.payload) : state;
+export const myStore = (state = initialState, action) => reducerMapping[action.type] ? reducerMapping[action.type](state, action.payload) : state;

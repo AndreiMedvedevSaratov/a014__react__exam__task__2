@@ -1,0 +1,35 @@
+import React, { useMemo  } from 'react';
+import { useSelector } from 'react-redux';
+
+const Group = (item) => {
+	const localItem = item.item;
+
+	return useMemo(() => (
+		<div
+			id={localItem.id}
+		>
+			{localItem.groupName}
+		</div>
+	), [localItem.id, localItem.groupName]);
+}
+
+const Groups = () => {
+	const localState = useSelector((state) => state.myStore);
+
+	const markup = useMemo(() => (
+		<>
+			{localState.groupsIds.map(item =>
+				<div key={item}>
+					<Group
+						item={localState.groups[item]}
+						id={item}
+					/>
+				</div>
+			)}
+		</>
+	), [localState]);
+
+	return markup;
+}
+
+export default Groups;
