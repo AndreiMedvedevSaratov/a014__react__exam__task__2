@@ -1,11 +1,17 @@
-import React, { useMemo } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useMemo, useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { removeUserFromGroup } from './../../Store/Users/Actions';
 
 const Group = (item) => {
 	const localItem = item.item;
+	const dispatch = useDispatch();
 
 	const localState = useSelector((state) => state.myStore);
 	const groupUsersIds = useSelector((state) => state.myStore.groups[item.id].groupUsers);
+
+	const handleRemove = useCallback((ids) => {
+		dispatch(removeUserFromGroup(ids));
+	}, [dispatch]);
 
 	return useMemo(() => (
 		<>
@@ -19,14 +25,14 @@ const Group = (item) => {
 					{localState.users[item].name}
 					<button className='button'
 						id={item}
-						// onClick={() => handleRemove(localState.usersIds[item])}
+						onClick={() => handleRemove({ userId: localState.users[item].id, groupId: localItem.id})}
 					>
 						Remove
 					</button>
 				</div>
 			)}
 		</>
-	), [localItem.id, localItem.groupName, groupUsersIds, localState.users]);
+	), [localItem.id, localItem.groupName, groupUsersIds, localState.users, handleRemove]);
 }
 
 const Groups = () => {
