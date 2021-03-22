@@ -7,7 +7,6 @@ const Users = () => {
 	const dispatch = useDispatch();
 
 	const handleDelete = useCallback((id) => {
-		console.log(id);
 		dispatch(deleteUserFromUsers(id));
 	}, [dispatch]);
 
@@ -21,9 +20,9 @@ const Users = () => {
 					>
 						{localState.users[item].name}
 					</span>
-					<button
+					<button className='button'
 						id={item}
-						onClick={() => handleDelete(localState.usersIds[item])}
+						onClick={() => handleDelete(localState.users[item].id)}
 					>
 						Delete
 					</button>

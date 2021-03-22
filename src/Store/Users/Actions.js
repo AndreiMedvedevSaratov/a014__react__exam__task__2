@@ -16,9 +16,11 @@ export const removeUserFromGroup = ({ userId, groupId }) => ({
 	},
 });
 
-export const deleteUserFromUsers = ({ userId }) => ({
-	type: usersActionTypes.deleteUserFromUsers,
-	payload: {
-		id: userId,
-	},
-});
+export const deleteUserFromUsers = (userId) => {
+	return {
+		type: usersActionTypes.deleteUserFromUsers,
+		payload: {
+			userId: userId,
+		},
+	};
+};
