@@ -12,7 +12,7 @@ const Users = () => {
 
 	const markup = useMemo(() => (
 		<>
-			{localState.usersIds.map(item => (
+			{!!localState.usersIds.length && localState.usersIds.map(item => (
 				<div key={item}>
 					<span
 						item={localState.users[item]}

@@ -24,6 +24,10 @@ const initialState = {
 
 const reducerMapping = {
 	[usersActionTypes.addUserInGroup]: (state, { userId, groupId }) => {
+		if (state.groups[groupId].groupUsers.includes(userId)) {
+			console.log('User already in group!');
+			return state;
+		}
 
 		return {
 			...state,

@@ -20,7 +20,7 @@ const Group = (item) => {
 			>
 				{localItem.groupName}
 			</div>
-			{groupUsersIds.map(item =>
+			{!!groupUsersIds.length && groupUsersIds.map(item =>
 				<div key={item}>
 					{localState.users[item].name}
 					<button className='button'
