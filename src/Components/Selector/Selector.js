@@ -50,8 +50,10 @@ const Selector = () => {
 				)}
 			</select>
 
-			<button className='button'
+			<button
+				className='button'
 				onClick={() => handleAdd()}
+				disabled={localState.usersIds.length === 0}
 			>Add
 			</button>
 		</>
