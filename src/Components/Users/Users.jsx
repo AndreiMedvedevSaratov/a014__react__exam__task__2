@@ -1,6 +1,6 @@
 import React, { useMemo, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteUserFromUsers } from './../../Store/Users/Actions';
+import { deleteUserFromUsers } from '../../Store/Users/Actions';
 
 const Users = () => {
 	const localState = useSelector((state) => state.myStore);

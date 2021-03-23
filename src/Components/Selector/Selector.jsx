@@ -1,6 +1,6 @@
 import React, { useMemo, useCallback, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addUserInGroup } from './../../Store/Users/Actions';
+import { addUserInGroup } from '../../Store/Users/Actions';
 
 const Selector = () => {
 	const localState = useSelector((state) => state.myStore);
