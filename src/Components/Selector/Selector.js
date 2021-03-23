@@ -6,8 +6,13 @@ const Selector = () => {
 	const localState = useSelector((state) => state.myStore);
 	const dispatch = useDispatch();
 
-	const [selectedUserId, setSelectedUserId] = useState(localState.users[localState.usersIds[0]].id);
-	const [selectedGroupId, setSelectedGroupId] = useState(localState.groups[localState.groupsIds[0]].id);
+	let tempSelectedUserId;
+	let tempSelectedGroupId;
+	tempSelectedUserId = (localState.usersIds.length === 0) ? '' : localState.users[localState.usersIds[0]].id;
+	tempSelectedGroupId = (localState.groupsIds.length === 0) ? '' : localState.groups[localState.groupsIds[0]].id;
+
+	const [selectedUserId, setSelectedUserId] = useState(tempSelectedUserId);
+	const [selectedGroupId, setSelectedGroupId] = useState(tempSelectedGroupId);
 
 	const handleAdd = useCallback(() => {
 		dispatch(addUserInGroup({ userId: selectedUserId, groupId: selectedGroupId }));
