@@ -1,9 +1,10 @@
 import React, { useMemo, useCallback, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addUserInGroup } from '../../Store/Users/Actions';
+import { getMyStore } from './../../Store/Users/Selectors';
 
 const Selector = () => {
-	const localState = useSelector((state) => state.myStore);
+	const localState = useSelector(getMyStore);
 	const dispatch = useDispatch();
 
 	let tempSelectedUserId;

@@ -1,9 +1,10 @@
 import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import Group from './Group/Group';
+import { getMyStore } from './../../Store/Users/Selectors';
 
 const Groups = () => {
-	const localState = useSelector((state) => state.myStore);
+	const localState = useSelector(getMyStore);
 
 	const markup = useMemo(() => (
 		<>
