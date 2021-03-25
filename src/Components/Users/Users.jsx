@@ -2,6 +2,7 @@ import React, { useMemo, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteUserFromUsers } from '../../Store/Users/Actions';
 import { getMyStore } from './../../Store/Users/Selectors';
+import UsersDumb from './UsersDumb';
 
 const Users = () => {
 	const localState = useSelector(getMyStore);
@@ -14,20 +15,13 @@ const Users = () => {
 	const markup = useMemo(() => (
 		<>
 			{!!localState.usersIds.length && localState.usersIds.map(item => (
-				<div key={item}>
-					<span
-						item={localState.users[item]}
-						id={item}
-					>
-						{localState.users[item].name}
-					</span>
-					<button className='button'
-						id={item}
-						onClick={() => handleDelete(localState.users[item].id)}
-					>
-						Delete
-					</button>
-				</div>
+				<UsersDumb
+					item={item}
+					users={localState.users}
+					idToDelete={localState.users[item].id}
+					handleDelete={handleDelete}
+					key={item}
+				/>
 			))}
 		</>
 	), [localState, handleDelete]);

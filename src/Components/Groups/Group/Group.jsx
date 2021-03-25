@@ -2,6 +2,7 @@ import React, { useMemo, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeUserFromGroup } from './../../../Store/Users/Actions';
 import { getMyStore, getGroupUsersIds } from './../../../Store/Users/Selectors';
+import GroupDumb from './GroupDumb';
 
 const Group = (item) => {
 	const localItem = item.item;
@@ -23,13 +24,12 @@ const Group = (item) => {
 			</div>
 			{!!groupUsersIds.length && groupUsersIds.map(item =>
 				<div key={item}>
-					{localState.users[item].name}
-					<button className='button'
-						id={item}
-						onClick={() => handleRemove({ userId: localState.users[item].id, groupId: localItem.id })}
-					>
-						Remove
-					</button>
+					<GroupDumb
+						userName={localState.users[item].name}
+						userId={localState.users[item].id}
+						groupId={localItem.id}
+						handleRemove={handleRemove}
+					/>
 				</div>
 			)}
 		</>
