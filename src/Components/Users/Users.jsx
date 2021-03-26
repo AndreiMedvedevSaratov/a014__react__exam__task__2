@@ -1,18 +1,18 @@
 import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { getMyStore } from './../../Store/Users/Selectors';
+import { getUsersIds } from './../../Store/Users/Selectors';
 import UserSmart from './UserSmart';
 
 const Users = () => {
-	const localState = useSelector(getMyStore);
+	const usersIds = useSelector(getUsersIds);
 
 	const markup = useMemo(() => (
 		<>
-			{!!localState.usersIds.length && localState.usersIds.map(item => (
+			{!!usersIds.length && usersIds.map(item => (
 				<UserSmart key={item} id={item} />
 			))}
 		</>
-	), [localState]);
+	), [usersIds]);
 
 	return markup;
 }

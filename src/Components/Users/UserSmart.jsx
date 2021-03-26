@@ -1,14 +1,13 @@
 import React, { useMemo, useCallback } from 'react';
 import { deleteUserFromUsers } from '../../Store/Users/Actions';
 import { useSelector, useDispatch } from 'react-redux';
-import { getMyStore } from './../../Store/Users/Selectors';
+import { getUsers } from './../../Store/Users/Selectors';
 import UserDumb from './UserDumb';
 
 const UserSmart = (props) => {
 	const dispatch = useDispatch();
 
-	const localState = useSelector(getMyStore);
-	const users = localState.users;
+	const users = useSelector(getUsers);
 
 	const handleDelete = useCallback((id) => {
 		dispatch(deleteUserFromUsers(id));
