@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { getUsersIds } from './../../Store/Users/Selectors';
+import { getUsersIds } from '../../Store/users/selectors';
 import UserSmart from './UserSmart';
 
 const Users = () => {

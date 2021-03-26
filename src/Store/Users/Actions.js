@@ -1,16 +1,4 @@
-import { usersActionTypes } from "./ActionTypes";
-
-export const addUserInGroup = (ids) => ({
-	type: usersActionTypes.addUserInGroup,
-	payload: ids,
-});
-
-export const removeUserFromGroup = (ids) => {
-	return {
-		type: usersActionTypes.removeUserFromGroup,
-		payload: ids,
-	}
-};
+import { usersActionTypes } from "./actionTypes";
 
 export const deleteUserFromUsers = (userId) => {
 	return {

@@ -1,7 +1,8 @@
 import React, { useMemo, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeUserFromGroup } from '../../../Store/Users/Actions';
-import { getGroupUsersIds, getUsers, getGroupName } from '../../../Store/Users/Selectors';
+import { removeUserFromGroup } from '../../../Store/groups/actions';
+import { getGroupUsersIds, getGroupName } from '../../../Store/groups/selectors';
+import { getUsers } from '../../../Store/users/selectors';
 import GroupDumb from './GroupDumb';
 
 const GroupSmart = (props) => {

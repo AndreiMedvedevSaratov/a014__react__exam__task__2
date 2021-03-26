@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import GroupSmart from './Group/GroupSmart';
-import { getGroupsIds } from './../../Store/Users/Selectors';
+import { getGroupsIds } from '../../Store/groups/selectors';
 
 const Groups = () => {
 	const groupsIds = useSelector(getGroupsIds);

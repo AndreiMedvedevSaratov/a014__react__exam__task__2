@@ -1,7 +1,8 @@
 import React, { useMemo, useCallback, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addUserInGroup } from '../../Store/Users/Actions';
-import { getUsers, getUsersIds, getGroupsIds, getGroups } from './../../Store/Users/Selectors';
+import { addUserInGroup } from '../../Store/groups/actions';
+import { getUsers, getUsersIds } from '../../Store/users/selectors';
+import { getGroupsIds, getGroups } from '../../Store/groups/selectors';
 
 const Selector = () => {
 	const users = useSelector(getUsers);
@@ -62,7 +63,7 @@ const Selector = () => {
 			>Add
 			</button>
 		</>
-	), [ users, usersIds, groups, groupsIds, handleAdd, selectedUserId, selectedGroupId]);
+	), [users, usersIds, groups, groupsIds, handleAdd, selectedUserId, selectedGroupId]);
 
 	return markup;
 }
