@@ -11,3 +11,8 @@ export const removeUserFromGroup = (ids) => {
 		payload: ids,
 	}
 };
+
+export const deleteUserFromGroupUsersArray = (id) => ({
+	type: groupsActionTypes.deleteUserFromGroupUsersArray,
+	payload: id,
+});
