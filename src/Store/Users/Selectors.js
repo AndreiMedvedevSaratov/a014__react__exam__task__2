@@ -1,13 +1,55 @@
-export const getMyStore = state => state.myStore;
+import { createSelector } from 'reselect';
 
-export const getGroupUsersIds = (state, groupId) => state.myStore.groups[groupId].groupUsers;
+export const getGroupUsersIds1 = (state, groupId) => state.myStore.groups[groupId].groupUsers;
 
-export const getUsersIds = (state) => state.myStore.usersIds;
+export const getGroupUsersIds = createSelector(
+	getGroupUsersIds1,
+	(groupUsersIds) => {
+		return groupUsersIds;
+	}
+);
 
-export const getUsers = (state) => state.myStore.users;
+export const getUsersIds1 = (state) => state.myStore.usersIds;
 
-export const getGroupsIds = (state) => state.myStore.groupsIds;
+export const getUsersIds = createSelector(
+	getUsersIds1,
+	(usersIds) => {
+		return usersIds;
+	}
+);
 
-export const getGroups = (state) => state.myStore.groups;
+export const getUsers1 = (state) => state.myStore.users;
 
-export const getGroupName = (state, groupId) => state.myStore.groups[groupId].groupName;
+export const getUsers = createSelector(
+	getUsers1,
+	(users) => {
+		return users;
+	}
+);
+
+export const getGroupsIds1 = (state) => state.myStore.groupsIds;
+
+export const getGroupsIds = createSelector(
+	getGroupsIds1,
+	(groupsIds) => {
+		return groupsIds;
+	}
+);
+
+export const getGroups1 = (state) => state.myStore.groups;
+
+export const getGroups = createSelector(
+	getGroups1,
+	(groups) => {
+		return groups;
+	}
+);
+
+export const getGroupName1 = (state, groupId) => state.myStore.groups[groupId].groupName;
+
+export const getGroupName = createSelector(
+	getGroupName1,
+	(groupName) => {
+		return groupName;
+	}
+);
