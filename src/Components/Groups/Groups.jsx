@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import Group from './Group/Group';
+import GroupSmart from './Group/GroupSmart';
 import { getMyStore } from './../../Store/Users/Selectors';
 
 const Groups = () => {
@@ -10,7 +10,7 @@ const Groups = () => {
 		<>
 			{localState.groupsIds.map(item =>
 				<div key={item}>
-					<Group
+					<GroupSmart
 						item={localState.groups[item]}
 						id={item}
 					/>

@@ -1,10 +1,10 @@
 import React, { useMemo, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeUserFromGroup } from './../../../Store/Users/Actions';
-import { getMyStore, getGroupUsersIds } from './../../../Store/Users/Selectors';
+import { removeUserFromGroup } from '../../../Store/Users/Actions';
+import { getMyStore, getGroupUsersIds } from '../../../Store/Users/Selectors';
 import GroupDumb from './GroupDumb';
 
-const Group = (item) => {
+const GroupSmart = (item) => {
 	const localItem = item.item;
 	const dispatch = useDispatch();
 
@@ -17,11 +17,9 @@ const Group = (item) => {
 
 	return useMemo(() => (
 		<>
-			<div
-				id={localItem.id}
-			>
+			<h4>
 				{localItem.groupName}
-			</div>
+			</h4>
 			{!!groupUsersIds.length && groupUsersIds.map(item =>
 				<div key={item}>
 					<GroupDumb
@@ -36,4 +34,4 @@ const Group = (item) => {
 	), [localItem.id, localItem.groupName, groupUsersIds, localState.users, handleRemove]);
 }
 
-export default Group;
+export default GroupSmart;
