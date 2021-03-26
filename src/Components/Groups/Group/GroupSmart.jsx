@@ -1,15 +1,16 @@
 import React, { useMemo, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeUserFromGroup } from '../../../Store/Users/Actions';
-import { getMyStore, getGroupUsersIds } from '../../../Store/Users/Selectors';
+import { getGroupUsersIds, getUsers, getGroupName } from '../../../Store/Users/Selectors';
 import GroupDumb from './GroupDumb';
 
-const GroupSmart = (item) => {
-	const localItem = item.item;
+const GroupSmart = (props) => {
+	const groupId = props.id;
 	const dispatch = useDispatch();
 
-	const localState = useSelector(getMyStore);
-	const groupUsersIds = useSelector(state => getGroupUsersIds(state, item.id));
+	const groupUsersIds = useSelector(state => getGroupUsersIds(state, groupId));
+	const groupName = useSelector(state => getGroupName(state, groupId));
+	const users = useSelector(getUsers);
 
 	const handleRemove = useCallback((ids) => {
 		dispatch(removeUserFromGroup(ids));
@@ -18,20 +19,20 @@ const GroupSmart = (item) => {
 	return useMemo(() => (
 		<>
 			<h4>
-				{localItem.groupName}
+				{groupName}
 			</h4>
 			{!!groupUsersIds.length && groupUsersIds.map(item =>
 				<div key={item}>
 					<GroupDumb
-						userName={localState.users[item].name}
-						userId={localState.users[item].id}
-						groupId={localItem.id}
-						handleRemove={() => handleRemove({ userId: localState.users[item].id, groupId: localItem.id })}
+						userName={users[item].name}
+						userId={users[item].id}
+						groupId={groupId}
+						handleRemove={() => handleRemove({ userId: users[item].id, groupId: groupId })}
 					/>
 				</div>
 			)}
 		</>
-	), [localItem.id, localItem.groupName, groupUsersIds, localState.users, handleRemove]);
+	), [groupId, groupName, groupUsersIds, users, handleRemove]);
 }
 
 export default GroupSmart;

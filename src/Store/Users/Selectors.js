@@ -1,19 +1,13 @@
-export const getMyStore = state => {
+export const getMyStore = state => state.myStore;
 
-	return state.myStore;
-}
+export const getGroupUsersIds = (state, groupId) => state.myStore.groups[groupId].groupUsers;
 
-export const getGroupUsersIds = (state, groupsId) => {
+export const getUsersIds = (state) => state.myStore.usersIds;
 
-	return state.myStore.groups[groupsId].groupUsers;
-}
+export const getUsers = (state) => state.myStore.users;
 
-export const getUsersIds = (state) => {
+export const getGroupsIds = (state) => state.myStore.groupsIds;
 
-	return state.myStore.usersIds;
-}
+export const getGroups = (state) => state.myStore.groups;
 
-export const getUsers = (state) => {
-
-	return state.myStore.users;
-}
+export const getGroupName = (state, groupId) => state.myStore.groups[groupId].groupName;
