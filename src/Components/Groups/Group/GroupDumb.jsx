@@ -5,7 +5,7 @@ const GroupDumb = (props) => {
 		<>
 			{props.userName}
 			<button className='button'
-				onClick={() => props.handleRemove({ userId: props.userId, groupId: props.groupId })}
+				onClick={props.handleRemove}
 			>
 				Remove
 			</button>

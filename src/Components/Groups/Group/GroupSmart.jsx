@@ -26,7 +26,7 @@ const GroupSmart = (item) => {
 						userName={localState.users[item].name}
 						userId={localState.users[item].id}
 						groupId={localItem.id}
-						handleRemove={handleRemove}
+						handleRemove={() => handleRemove({ userId: localState.users[item].id, groupId: localItem.id })}
 					/>
 				</div>
 			)}
