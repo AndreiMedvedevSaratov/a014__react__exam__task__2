@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { getUsersIds } from '../../Store/users/selectors';
-import UserSmart from './UserSmart';
+import User from './User/User';
 
 const Users = () => {
 	const usersIds = useSelector(getUsersIds);
@@ -9,7 +9,7 @@ const Users = () => {
 	const markup = useMemo(() => (
 		<>
 			{!!usersIds.length && usersIds.map(item => (
-				<UserSmart key={item} id={item} />
+				<User key={item} id={item} />
 			))}
 		</>
 	), [usersIds]);
