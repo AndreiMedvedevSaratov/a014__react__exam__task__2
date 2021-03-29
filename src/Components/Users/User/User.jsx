@@ -1,8 +1,8 @@
 import React, { useMemo, useCallback } from 'react';
-import { deleteUserFromUsers } from '../../../Store/users/actions';
-import { deleteUserFromGroupUsersArray } from '../../../Store/groups/actions';
+import { deleteUserFromUsersThunk } from '../../../Store/users/actions';
 import { useSelector, useDispatch } from 'react-redux';
 import { getUsers } from '../../../Store/users/selectors';
+
 
 const UserSmart = (props) => {
 	const dispatch = useDispatch();
@@ -10,8 +10,7 @@ const UserSmart = (props) => {
 	const users = useSelector(getUsers);
 
 	const handleDelete = useCallback((id) => {
-		dispatch(deleteUserFromGroupUsersArray(id));
-		dispatch(deleteUserFromUsers(id));
+		dispatch(deleteUserFromUsersThunk(id));
 	}, [dispatch]);
 
 	const markup = useMemo(() => (
