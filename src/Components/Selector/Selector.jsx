@@ -1,21 +1,21 @@
 import React, { useMemo, useCallback, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addUserInGroup } from '../../Store/groups/actions';
-import { getUsers, getUsersIds } from '../../Store/users/selectors';
-import { getGroupsIds, getGroups } from '../../Store/groups/selectors';
+import { getUsersIds, getUsersNames } from '../../Store/users/selectors';
+import { getGroupsIds, getGroupsNames } from '../../Store/groups/selectors';
 
 const Selector = () => {
-	const users = useSelector(getUsers);
 	const usersIds = useSelector(getUsersIds);
-	const groups = useSelector(getGroups);
 	const groupsIds = useSelector(getGroupsIds);
+	const groupsNames = useSelector(getGroupsNames);
+	const usersNames = useSelector(getUsersNames);
 
 	const dispatch = useDispatch();
 
 	let tempSelectedUserId;
 	let tempSelectedGroupId;
-	tempSelectedUserId = (usersIds.length === 0) ? '' : users[usersIds[0]].id;
-	tempSelectedGroupId = (groupsIds.length === 0) ? '' : groups[groupsIds[0]].id;
+	tempSelectedUserId = (usersIds.length === 0) ? '' : usersIds[0];
+	tempSelectedGroupId = (groupsIds.length === 0) ? '' : groupsIds[0];
 
 	const [selectedUserId, setSelectedUserId] = useState(tempSelectedUserId);
 	const [selectedGroupId, setSelectedGroupId] = useState(tempSelectedGroupId);
@@ -35,8 +35,8 @@ const Selector = () => {
 				{!!usersIds.length && usersIds.map(item =>
 					<option
 						key={item}
-						value={users[item].id}>
-						{users[item].name}
+						value={item}>
+						{usersNames[item].userName}
 					</option>
 				)}
 			</select>
@@ -50,8 +50,8 @@ const Selector = () => {
 				{!!groupsIds.length && groupsIds.map(item =>
 					<option
 						key={item}
-						value={groups[item].id}>
-						{groups[item].groupName}
+						value={item}>
+						{groupsNames[item].groupName}
 					</option>
 				)}
 			</select>
@@ -63,7 +63,7 @@ const Selector = () => {
 			>Add
 			</button>
 		</>
-	), [users, usersIds, groups, groupsIds, handleAdd, selectedUserId, selectedGroupId]);
+	), [usersNames, usersIds, groupsNames, groupsIds, handleAdd, selectedUserId, selectedGroupId]);
 
 	return markup;
 }
