@@ -38,7 +38,7 @@ const reducerMapping = {
 	[groupsActionTypes.removeUserFromGroup]: (state, { userId, groupId }) => {
 		const tempGroupUsers = [...state.groups[groupId].groupUsers];
 		let newGroupUsers = tempGroupUsers.filter(item => item !== userId);
-
+		
 		return {
 			...state,
 			groups: {

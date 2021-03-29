@@ -1,14 +1,14 @@
 import React, { useMemo, useCallback, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addUserInGroup } from '../../Store/groups/actions';
-import { getUsersIds, getUsersNames } from '../../Store/users/selectors';
-import { getGroupsIds, getGroupsNames } from '../../Store/groups/selectors';
+import { getUsersIdsReselected, getUsersNamesReselected } from '../../Store/users/selectors';
+import { getGroupsNamesReselected, getGroupsIdsReselected } from '../../Store/groups/selectors';
 
-const Selector = (props) => {
-	const usersIds = useSelector(getUsersIds);
-	const groupsIds = useSelector(getGroupsIds);
-	const groupsNames = useSelector(getGroupsNames);
-	const usersNames = useSelector(getUsersNames);
+const Selector = () => {
+	const usersIds = useSelector(getUsersIdsReselected);
+	const groupsIds = useSelector(getGroupsIdsReselected);
+	const groupsNames = useSelector(getGroupsNamesReselected);
+	const usersNames = useSelector(getUsersNamesReselected);
 
 	const dispatch = useDispatch();
 

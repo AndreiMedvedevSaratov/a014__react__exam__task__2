@@ -1,4 +1,4 @@
-// import { createSelector } from 'reselect';
+import { createSelector } from 'reselect';
 
 export const getUsersIds = (state) => state.users.usersIds;
 
@@ -18,3 +18,13 @@ export const getUsersNames = (state) => {
 
 	return usersNames;
 }
+
+export const getUsersIdsReselected = createSelector(
+	getUsersIds,
+	(usersIds) => usersIds,
+);
+
+export const getUsersNamesReselected = createSelector(
+	getUsersNames,
+	(usersNames) => usersNames,
+);

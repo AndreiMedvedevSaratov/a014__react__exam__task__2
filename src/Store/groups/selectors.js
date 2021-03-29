@@ -21,9 +21,12 @@ export const getGroupsNames = (state) => {
 	return groupsNames;
 }
 
-// export const getGroupsIdsAndNames = createSelector(
-// 	getGroupsIds,
-// 	getGroupsNames,
-// 	(groupsIds) => console.log(groupIds),
+export const getGroupsIdsReselected = createSelector(
+	getGroupsIds,
+	(groupsIds) => groupsIds,
+);
 
-// )
+export const getGroupsNamesReselected = createSelector(
+	getGroupsNames,
+	(groupsNames) => groupsNames,
+);
