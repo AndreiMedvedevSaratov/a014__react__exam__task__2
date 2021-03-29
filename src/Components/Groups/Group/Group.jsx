@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { removeUserFromGroup } from '../../../Store/groups/actions';
 import { getGroupUsersIds, getGroupName } from '../../../Store/groups/selectors';
 import { getUsers } from '../../../Store/users/selectors';
-import GroupDumb from './GroupDumb';
 
 const GroupSmart = (props) => {
 	const groupId = props.id;
@@ -24,12 +23,12 @@ const GroupSmart = (props) => {
 			</h4>
 			{!!groupUsersIds.length && groupUsersIds.map(item =>
 				<div key={item}>
-					<GroupDumb
-						userName={users[item].name}
-						userId={users[item].id}
-						groupId={groupId}
-						handleRemove={() => handleRemove({ userId: users[item].id, groupId: groupId })}
-					/>
+					{users[item].name}
+					<button className='button'
+						onClick={() => handleRemove({ userId: users[item].id, groupId: groupId })}
+					>
+						Remove
+						</button>
 				</div>
 			)}
 		</>
