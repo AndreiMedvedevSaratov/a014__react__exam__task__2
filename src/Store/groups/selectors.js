@@ -1,4 +1,4 @@
-// import { createSelector } from 'reselect';
+import { createSelector } from 'reselect';
 
 export const getGroupUsersIds = (state, groupId) => state.groups.groups[groupId].groupUsers;
 
@@ -20,3 +20,10 @@ export const getGroupsNames = (state) => {
 
 	return groupsNames;
 }
+
+// export const getGroupsIdsAndNames = createSelector(
+// 	getGroupsIds,
+// 	getGroupsNames,
+// 	(groupsIds) => console.log(groupIds),
+
+// )

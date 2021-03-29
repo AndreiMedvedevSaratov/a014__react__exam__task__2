@@ -4,7 +4,7 @@ import { addUserInGroup } from '../../Store/groups/actions';
 import { getUsersIds, getUsersNames } from '../../Store/users/selectors';
 import { getGroupsIds, getGroupsNames } from '../../Store/groups/selectors';
 
-const Selector = () => {
+const Selector = (props) => {
 	const usersIds = useSelector(getUsersIds);
 	const groupsIds = useSelector(getGroupsIds);
 	const groupsNames = useSelector(getGroupsNames);

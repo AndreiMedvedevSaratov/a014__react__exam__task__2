@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getUsers } from '../../../Store/users/selectors';
 
 
-const UserSmart = (props) => {
+const User = (props) => {
 	const dispatch = useDispatch();
 
 	const users = useSelector(getUsers);
@@ -28,4 +28,4 @@ const UserSmart = (props) => {
 	return markup;
 }
 
-export default UserSmart;
+export default User;

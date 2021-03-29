@@ -4,7 +4,7 @@ import { removeUserFromGroup } from '../../../Store/groups/actions';
 import { getGroupUsersIds, getGroupName } from '../../../Store/groups/selectors';
 import { getUsers } from '../../../Store/users/selectors';
 
-const GroupSmart = (props) => {
+const Group = (props) => {
 	const groupId = props.id;
 	const dispatch = useDispatch();
 
@@ -35,4 +35,4 @@ const GroupSmart = (props) => {
 	), [groupId, groupName, groupUsersIds, users, handleRemove]);
 }
 
-export default GroupSmart;
+export default Group;
