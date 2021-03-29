@@ -1,12 +1,12 @@
-import React, { useMemo, useCallback, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addUserInGroup } from '../../Store/groups/actions';
-import { getUsersIdsReselected, getUsersNamesReselected } from '../../Store/users/selectors';
-import { getGroupsNamesReselected, getGroupsIdsReselected } from '../../Store/groups/selectors';
+import { getUsersIds, getUsersNamesReselected } from '../../Store/users/selectors';
+import { getGroupsNamesReselected, getGroupsIds } from '../../Store/groups/selectors';
 
 const Selector = () => {
-	const usersIds = useSelector(getUsersIdsReselected);
-	const groupsIds = useSelector(getGroupsIdsReselected);
+	const usersIds = useSelector(getUsersIds);
+	const groupsIds = useSelector(getGroupsIds);
 	const groupsNames = useSelector(getGroupsNamesReselected);
 	const usersNames = useSelector(getUsersNamesReselected);
 
@@ -24,7 +24,7 @@ const Selector = () => {
 		dispatch(addUserInGroup({ userId: selectedUserId, groupId: selectedGroupId }));
 	}, [selectedUserId, selectedGroupId, dispatch]);
 
-	const markup = useMemo(() => (
+	return (
 		<>
 			<span>User</span>
 			<select
@@ -63,9 +63,7 @@ const Selector = () => {
 			>Add
 			</button>
 		</>
-	), [usersNames, usersIds, groupsNames, groupsIds, handleAdd, selectedUserId, selectedGroupId]);
-
-	return markup;
+	)
 }
 
 export default Selector;

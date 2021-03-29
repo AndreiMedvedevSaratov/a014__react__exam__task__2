@@ -1,4 +1,4 @@
-import { createSelector } from 'reselect';
+import { createSelectorCreator, defaultMemoize } from 'reselect';
 
 export const getGroupUsersIds = (state, groupId) => state.groups.groups[groupId].groupUsers;
 
@@ -6,27 +6,35 @@ export const getGroupsIds = (state) => state.groups.groupsIds;
 
 export const getGroupName = (state, groupId) => state.groups.groups[groupId].groupName;
 
-export const getGroupsNames = (state) => {
-	let groupsNames = {};
+export const getGroups = (state) => state.groups.groups;
 
-	for (let i = 0; i < state.groups.groupsIds.length; i++) {
-		groupsNames = {
-			...groupsNames,
-			[state.groups.groupsIds[i]]: {
-				groupName: state.groups.groups[state.groups.groupsIds[i]].groupName,
-			}
-		}
+const isEqualNames = (a, b) => {
+	for (let key in a) {
+		if (a[key].groupName !== b[key].groupName) return false;
 	}
-
-	return groupsNames;
+	return true;
 }
 
-export const getGroupsIdsReselected = createSelector(
-	getGroupsIds,
-	(groupsIds) => groupsIds,
-);
+const createDeepEqualSelector = createSelectorCreator(
+	defaultMemoize,
+	isEqualNames,
+)
 
-export const getGroupsNamesReselected = createSelector(
-	getGroupsNames,
-	(groupsNames) => groupsNames,
+export const getGroupsNamesReselected = createDeepEqualSelector(
+	getGroups,
+	getGroupsIds,
+	(groups, groupsIds) => {
+		let groupsNames = {};
+
+		for (let i = 0; i < groupsIds.length; i++) {
+			groupsNames = {
+				...groupsNames,
+				[groupsIds[i]]: {
+					groupName: groups[groupsIds[i]].groupName,
+				}
+			}
+		}
+
+		return groupsNames;
+	}
 );
