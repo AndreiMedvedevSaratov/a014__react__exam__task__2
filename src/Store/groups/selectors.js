@@ -24,17 +24,11 @@ export const getGroupsNamesReselected = createDeepEqualSelector(
 	getGroups,
 	getGroupsIds,
 	(groups, groupsIds) => {
-		let groupsNames = {};
-
-		for (let i = 0; i < groupsIds.length; i++) {
-			groupsNames = {
-				...groupsNames,
-				[groupsIds[i]]: {
-					groupName: groups[groupsIds[i]].groupName,
-				}
+		return groupsIds.reduce(function (result, item) {
+			return {
+				...result,
+				[item]: { groupName: groups[item].groupName },
 			}
-		}
-
-		return groupsNames;
+		}, {});
 	}
 );
