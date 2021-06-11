@@ -1,3 +1,10 @@
+# a014__react__exam__task__2
+
+It was task to create lists and groups on React without unnecessary rerendings.
+
+I used React and Redux.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
